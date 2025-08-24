@@ -10,7 +10,7 @@
   }
   
   body {
-    @apply bg-background-light dark:bg-background-dark text-gray-900 dark:text-white;
+    @apply bg-brand-bg dark:bg-background-dark text-gray-900 dark:text-white;
   }
 
   /* Custom scrollbar */
@@ -33,11 +33,11 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-premium-gradient text-white font-medium py-3 px-6 rounded-xl shadow-premium hover:shadow-premium-lg transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply bg-brand-primary text-white font-medium py-3 px-6 rounded-xl shadow-premium hover:shadow-premium-lg transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed;
   }
   
   .btn-secondary {
-    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-white/20 dark:border-gray-700/50 text-gray-700 dark:text-gray-300 font-medium py-3 px-6 rounded-xl shadow-premium hover:shadow-premium-lg transition-all duration-300 transform hover:-translate-y-1;
+    @apply bg-transparent text-brand-secondary border border-brand-secondary rounded-xl font-medium py-3 px-6 shadow-premium hover:shadow-premium-lg transition-all duration-300 transform hover:-translate-y-1;
   }
   
   .card {
@@ -123,7 +123,7 @@
 }
 
 body {
-  background: linear-gradient(120deg, #2ECC71 0%, #111827 100%);
+  background: linear-gradient(120deg, var(--brand-bg) 0%, var(--brand-emerald) 60%, var(--brand-navy) 100%);
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
   min-height: 100vh;

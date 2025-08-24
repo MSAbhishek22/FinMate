@@ -34,14 +34,12 @@ export default {
           900: '#134e4a',
           deep: '#1A3C40',
         },
-  primary: '#2ECC71', // Emerald Green
-        'brand-emerald': '#2ECC71',
-        'brand-deep': '#0B1F1A',
-        'brand-gold': '#FFD700',
-        'brand-ink': '#111827',
-        'brand-slate': '#F1F5F9',
-        'brand-card-light': 'rgba(255,255,255,0.7)',
-        'brand-card-dark': 'rgba(17,24,39,0.6)',
+    'brand-emerald': '#2ECC71', // Primary
+    'brand-navy': '#1B263B',    // Secondary
+    'brand-gold': '#F5C518',    // Accent
+    'brand-bg': '#F8F9FA',      // Background
+    'brand-card-light': 'rgba(255,255,255,0.7)',
+    'brand-card-dark': 'rgba(27,38,59,0.7)',
   premium: '#004B23', // Deep Forest Green
   gold: '#FFD700',    // Gold
   accent: '#1A3E68',  // Royal Blue
