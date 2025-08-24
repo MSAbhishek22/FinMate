@@ -125,38 +125,3 @@
     opacity: 0;
   }
 }
-
-/* Premium animations */
-.premium-hover {
-  @apply transition-all duration-300 hover:scale-105 hover:shadow-premium-lg;
-}
-
-.premium-focus {
-  @apply focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900;
-}
-
-/* Dark mode transitions */
-* {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
-body {
-  background: linear-gradient(120deg, var(--brand-bg) 0%, var(--brand-emerald) 60%, var(--brand-navy) 100%);
-  background-size: 100vw 100vh;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  color: var(--text-main);
-  font-family: 'DM Sans', 'Space Grotesk', ui-sans-serif, system-ui;
-}
-
-.premium-bg {
-  background: linear-gradient(135deg, #2ECC71 0%, #004B23 100%);
-}
-
-.gold-text {
-  color: #FFD700;
-}
-
-.accent-text {
-  color: #1A3E68;
-}
