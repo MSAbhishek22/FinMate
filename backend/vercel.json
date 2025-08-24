@@ -11,8 +11,5 @@
       "src": "/(.*)",
       "dest": "app.py"
     }
-  ],
-  "env": {
-    "GEMINI_API_KEY": "AIzaSyAGO7dkP7A3fTJDFq7fobXvXQJBnnKouIQ"
-  }
+  ]
 }

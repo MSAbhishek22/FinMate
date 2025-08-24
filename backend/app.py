@@ -29,11 +29,19 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'your-secret-key-here')
 db.init_app(app)
 
 # Configure Gemini AI
-GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', 'AIzaSyAGO7dkP7A3fTJDFq7fobXvXQJBnnKouIQ')
-genai.configure(api_key=GEMINI_API_KEY)
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+if not GEMINI_API_KEY:
+    print("Warning: GEMINI_API_KEY not found in environment variables")
+    genai.configure(api_key="dummy-key-for-development")
+else:
+    genai.configure(api_key=GEMINI_API_KEY)
 
 # Initialize Gemini model
-model = genai.GenerativeModel('gemini-pro')
+try:
+    model = genai.GenerativeModel('gemini-pro')
+except Exception as e:
+    print(f"Warning: Could not initialize Gemini model: {e}")
+    model = None
 
 def create_tables():
     with app.app_context():
@@ -136,6 +144,23 @@ def get_ai_tips():
         if not expenses:
             return jsonify({
                 "tip": "Start tracking your expenses to get personalized financial advice! 💰",
+                "category": "general"
+            })
+        
+        # Check if Gemini AI is available
+        if not model or not GEMINI_API_KEY:
+            # Return fallback tips when AI is not available
+            fallback_tips = [
+                "Try the 50/30/20 rule: 50% needs, 30% wants, 20% savings! 💰",
+                "Set up automatic transfers to your savings account on payday! 🎯",
+                "Track every coffee and snack - small expenses add up quickly! ☕",
+                "Use cash for discretionary spending to feel the money leaving your hand! 💳",
+                "Review your subscriptions monthly - cancel what you don't use! 📱"
+            ]
+            
+            import random
+            return jsonify({
+                "tip": random.choice(fallback_tips),
                 "category": "general"
             })
         

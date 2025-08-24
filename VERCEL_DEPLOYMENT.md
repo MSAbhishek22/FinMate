@@ -7,6 +7,7 @@ This guide will help you deploy FinMate to Vercel with both frontend and backend
 - Vercel account (free at vercel.com)
 - GitHub account
 - Your FinMate project pushed to GitHub
+- Google Gemini AI API key (get from https://makersuite.google.com/app/apikey)
 
 ## Step 1: Deploy Backend to Vercel
 
@@ -24,7 +25,7 @@ The backend is already configured with:
 4. **Select the `backend` folder as the root directory**
 5. **Configure environment variables:**
    ```
-   GEMINI_API_KEY=AIzaSyAGO7dkP7A3fTJDFq7fobXvXQJBnnKouIQ
+   GEMINI_API_KEY=your_actual_gemini_api_key_here
    SECRET_KEY=your-secret-key-here
    ```
 6. **Click "Deploy"**
@@ -114,7 +115,7 @@ Visit your frontend URL and test:
 
 ### Backend Environment Variables
 ```
-GEMINI_API_KEY=AIzaSyAGO7dkP7A3fTJDFq7fobXvXQJBnnKouIQ
+GEMINI_API_KEY=your_actual_gemini_api_key_here
 SECRET_KEY=your-secret-key-here
 ```
 
@@ -122,6 +123,20 @@ SECRET_KEY=your-secret-key-here
 ```
 VITE_API_URL=https://your-backend-url.vercel.app
 ```
+
+## 🔒 Security Best Practices
+
+### API Key Security
+1. **Never commit API keys to Git** - They are now properly excluded
+2. **Use environment variables** - All sensitive data is stored in Vercel environment variables
+3. **Rotate keys regularly** - Change your API keys periodically
+4. **Monitor usage** - Check your Gemini AI usage dashboard
+
+### Environment Variables
+- ✅ API keys are removed from code
+- ✅ Environment variables are properly configured
+- ✅ Fallback tips work when AI is unavailable
+- ✅ No sensitive data in GitHub repository
 
 ## Troubleshooting
 
@@ -136,8 +151,9 @@ VITE_API_URL=https://your-backend-url.vercel.app
    - Check that your backend is deployed and accessible
 
 3. **Gemini AI Errors**
-   - Verify the `GEMINI_API_KEY` is set correctly
+   - Verify the `GEMINI_API_KEY` is set correctly in Vercel
    - Check the API key has proper permissions
+   - App will show fallback tips if AI is unavailable
 
 4. **Build Failures**
    - Check that all dependencies are in `requirements.txt`
@@ -185,9 +201,9 @@ VITE_API_URL=https://your-backend-url.vercel.app
 ## Security Considerations
 
 1. **API Key Security**
-   - Never expose API keys in client-side code
-   - Use environment variables for all sensitive data
-   - Rotate API keys regularly
+   - ✅ Never expose API keys in client-side code
+   - ✅ Use environment variables for all sensitive data
+   - ✅ Rotate API keys regularly
 
 2. **CORS Configuration**
    - Only allow necessary origins
