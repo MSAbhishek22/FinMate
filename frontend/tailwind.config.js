@@ -5,7 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: 'class',
-  theme: {
+  darkMode: 'media',
     extend: {
       colors: {
         // Premium Color Palette
@@ -35,6 +35,13 @@ export default {
           deep: '#1A3C40',
         },
   primary: '#2ECC71', // Emerald Green
+        'brand-emerald': '#2ECC71',
+        'brand-deep': '#0B1F1A',
+        'brand-gold': '#FFD700',
+        'brand-ink': '#111827',
+        'brand-slate': '#F1F5F9',
+        'brand-card-light': 'rgba(255,255,255,0.7)',
+        'brand-card-dark': 'rgba(17,24,39,0.6)',
   premium: '#004B23', // Deep Forest Green
   gold: '#FFD700',    // Gold
   accent: '#1A3E68',  // Royal Blue

@@ -123,8 +123,11 @@
 }
 
 body {
-  background: linear-gradient(135deg, #FFFFFF 0%, #2C3E50 100%);
-  color: #2C3E50;
+  background: linear-gradient(120deg, #2ECC71 0%, #111827 100%);
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: var(--text-main);
   font-family: 'DM Sans', 'Space Grotesk', ui-sans-serif, system-ui;
 }
 
