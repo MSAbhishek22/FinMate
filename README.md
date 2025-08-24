@@ -1,4 +1,4 @@
-# FinMate Premium 🚀
+# FinMate  🚀
 
 **Your AI-Powered Financial Companion for Gen-Z**
 
@@ -6,7 +6,7 @@ A premium Progressive Web App (PWA) that helps students and early earners track 
 
 ![FinMate Premium](https://img.shields.io/badge/FinMate-Premium%20Edition-1A3C40?style=for-the-badge&logo=react&logoColor=FFD700)
 
-## ✨ **Premium Features**
+## ✨ **Premium Features**(Coming soon)
 
 ### 🔐 **Authentication & Personalization**
 - **Firebase Authentication** - Secure Google & email/password login
@@ -245,4 +245,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Built with ❤️ for the next generation of financial leaders**
 
-*FinMate Premium - Where smart money meets beautiful design*
+*FinMate  - Where smart money meets beautiful design*
