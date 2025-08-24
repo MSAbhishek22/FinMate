@@ -58,34 +58,9 @@
       font-weight: 600;
       padding: 0.75rem 1.5rem;
       transition: border 200ms ease-out, color 200ms ease-out;
-    }
-    .btn-secondary:focus {
-      outline: 2px solid #F5C518;
-      outline-offset: 2px;
-    }
   }
-  
-      background: #fff;
-      border-radius: 24px;
-      border: 1px solid #E0E7EF;
-      box-shadow: 0 4px 24px 0 rgba(44,62,80,0.06);
-      padding: 1.5rem;
-      margin: 0.5rem 0;
-      transition: box-shadow 200ms ease-out, transform 200ms ease-out;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .card:hover {
-      box-shadow: 0 8px 32px 0 rgba(44,62,80,0.10);
-      transform: translateY(-2px) scale(1.01);
-    }
-    @apply bg-transparent text-brand-secondary border border-brand-secondary rounded-xl font-medium py-3 px-6 shadow-premium hover:shadow-premium-lg transition-all duration-300 transform hover:-translate-y-1;
-  }
-  
-  .card {
-    @apply bg-white/80 dark:bg-surface-dark/80 backdrop-blur-md rounded-2xl shadow-premium border border-white/20 dark:border-gray-700/50 hover:shadow-premium-lg transition-all duration-300;
-  }
+
+/* Fixed .card and .btn styles, removed broken/duplicate blocks */
   
   .premium-card {
     @apply bg-gradient-to-br from-white/90 to-white/70 dark:from-surface-dark/90 dark:to-surface-dark/70 backdrop-blur-md rounded-2xl shadow-premium border border-white/30 dark:border-gray-600/30 hover:shadow-premium-lg transition-all duration-300;
