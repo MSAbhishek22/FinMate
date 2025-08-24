@@ -121,3 +121,21 @@
 * {
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
+
+body {
+  background: linear-gradient(135deg, #FFFFFF 0%, #2C3E50 100%);
+  color: #2C3E50;
+  font-family: 'DM Sans', 'Space Grotesk', ui-sans-serif, system-ui;
+}
+
+.premium-bg {
+  background: linear-gradient(135deg, #2ECC71 0%, #004B23 100%);
+}
+
+.gold-text {
+  color: #FFD700;
+}
+
+.accent-text {
+  color: #1A3E68;
+}

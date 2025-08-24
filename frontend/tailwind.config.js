@@ -34,19 +34,12 @@ export default {
           900: '#134e4a',
           deep: '#1A3C40',
         },
-        gold: {
-          50: '#fffbeb',
-          100: '#fef3c7',
-          200: '#fde68a',
-          300: '#fcd34d',
-          400: '#fbbf24',
-          500: '#f59e0b',
-          600: '#d97706',
-          700: '#b45309',
-          800: '#92400e',
-          900: '#78350f',
-          accent: '#FFD700',
-        },
+  primary: '#2ECC71', // Emerald Green
+  premium: '#004B23', // Deep Forest Green
+  gold: '#FFD700',    // Gold
+  accent: '#1A3E68',  // Royal Blue
+  charcoal: '#2C3E50',// Charcoal Gray
+  white: '#FFFFFF',   // White
         background: {
           light: '#F1F5F9',
           dark: '#0f172a',
