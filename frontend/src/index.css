@@ -9,9 +9,13 @@
     font-family: 'DM Sans', system-ui, sans-serif;
   }
   
-  body {
-    @apply bg-brand-bg dark:bg-background-dark text-gray-900 dark:text-white;
-  }
+    body {
+      background: linear-gradient(120deg, #F4FFF8 0%, #FFFFFF 100%);
+      min-height: 100vh;
+      color: #1B263B;
+      font-family: 'DM Sans', 'Space Grotesk', ui-sans-serif, system-ui;
+      letter-spacing: 0.01em;
+    }
 
   /* Custom scrollbar */
   ::-webkit-scrollbar {
@@ -33,10 +37,49 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-brand-primary text-white font-medium py-3 px-6 rounded-xl shadow-premium hover:shadow-premium-lg transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed;
+      background: linear-gradient(90deg, #2ECC71 60%, #4FC3F7 100%);
+      color: #fff;
+      border-radius: 16px;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      box-shadow: 0 2px 8px 0 rgba(44,62,80,0.08);
+      transition: box-shadow 200ms ease-out, transform 200ms ease-out;
+      border: none;
+    }
+    .btn-primary:focus {
+      outline: 2px solid #F5C518;
+      outline-offset: 2px;
+    }
+    .btn-secondary {
+      background: #fff;
+      color: #2ECC71;
+      border: 1px solid #2ECC71;
+      border-radius: 16px;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      transition: border 200ms ease-out, color 200ms ease-out;
+    }
+    .btn-secondary:focus {
+      outline: 2px solid #F5C518;
+      outline-offset: 2px;
+    }
   }
   
-  .btn-secondary {
+      background: #fff;
+      border-radius: 24px;
+      border: 1px solid #E0E7EF;
+      box-shadow: 0 4px 24px 0 rgba(44,62,80,0.06);
+      padding: 1.5rem;
+      margin: 0.5rem 0;
+      transition: box-shadow 200ms ease-out, transform 200ms ease-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card:hover {
+      box-shadow: 0 8px 32px 0 rgba(44,62,80,0.10);
+      transform: translateY(-2px) scale(1.01);
+    }
     @apply bg-transparent text-brand-secondary border border-brand-secondary rounded-xl font-medium py-3 px-6 shadow-premium hover:shadow-premium-lg transition-all duration-300 transform hover:-translate-y-1;
   }
   
