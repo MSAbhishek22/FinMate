@@ -161,3 +161,7 @@ celerybeat-schedule
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# Firebase credentials (sensitive)
+firebase-credentials.json
+**/firebase-credentials.json
