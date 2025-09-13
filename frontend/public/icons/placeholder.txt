@@ -1,0 +1,6 @@
+PWA Icons needed:
+- icon-192x192.png (192x192 pixels)
+- icon-512x512.png (512x512 pixels)
+
+Create these icons with the FinMate logo or a financial-themed icon.
+Use the brand colors: Deep Teal (#1A3C40) and Gold (#FFD700)
