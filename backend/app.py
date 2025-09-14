@@ -40,11 +40,33 @@ CORS(app,
 
 # Database configuration
 DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///finmate.db')
+
+# Handle PostgreSQL URL format for Render
+if DATABASE_URL and DATABASE_URL.startswith('postgres://'):
+    DATABASE_URL = DATABASE_URL.replace('postgres://', 'postgresql://', 1)
+
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+# Create db object for compatibility
+from sqlalchemy.ext.declarative import declarative_base
+db_base = declarative_base()
+
+class DatabaseManager:
+    def __init__(self, engine):
+        self.engine = engine
+    
+    def create_all(self):
+        Base.metadata.create_all(bind=self.engine)
+
+db = DatabaseManager(engine)
+
 # Create tables
-Base.metadata.create_all(bind=engine)
+try:
+    db.create_all()
+    print("Database tables created successfully")
+except Exception as e:
+    print(f"Warning: Could not create database tables: {e}")
 
 # Configure Gemini AI
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
