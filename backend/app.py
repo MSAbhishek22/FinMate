@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory, send_file
 from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -17,7 +17,9 @@ import uuid
 # Load environment variables
 load_dotenv()
 
-app = Flask(__name__)
+# Configure Flask to serve static files from frontend build
+static_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'frontend', 'dist')
+app = Flask(__name__, static_folder=static_folder, static_url_path='')
 
 # Initialize rate limiter
 limiter = Limiter(
@@ -166,7 +168,33 @@ def after_request(response):
     return response
 
 @app.route('/')
-def home():
+def serve_frontend():
+    """Serve the React frontend"""
+    try:
+        return send_file(os.path.join(app.static_folder, 'index.html'))
+    except Exception as e:
+        # Fallback to API response if frontend files not found
+        return jsonify({
+            "message": "FinMate Premium API is running!",
+            "version": "2.0.0",
+            "status": "healthy",
+            "features": ["authentication", "ai_tips", "user_stats", "premium_ui"],
+            "note": "Frontend files not found. This is the API endpoint."
+        })
+
+# Serve static files (CSS, JS, images)
+@app.route('/<path:path>')
+def serve_static(path):
+    """Serve static files from React build"""
+    try:
+        return send_from_directory(app.static_folder, path)
+    except Exception:
+        # For client-side routing, serve index.html for unknown routes
+        return send_file(os.path.join(app.static_folder, 'index.html'))
+
+# API health check endpoint
+@app.route('/api/status')
+def api_status():
     return jsonify({
         "message": "FinMate Premium API is running!",
         "version": "2.0.0",
