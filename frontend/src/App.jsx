@@ -6,6 +6,8 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import Dashboard from './pages/Dashboard'
+import LearningPage from './pages/LearningPage'
+import AchievementsPage from './pages/AchievementsPage'
 import OfflineIndicator from './components/OfflineIndicator'
 import { useState, useEffect } from 'react'
 
@@ -82,6 +84,36 @@ function AppContent() {
                   transition={{ duration: 0.5 }}
                 >
                   <Dashboard />
+                </motion.div>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/learning" 
+            element={
+              <ProtectedRoute>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <LearningPage />
+                </motion.div>
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/achievements" 
+            element={
+              <ProtectedRoute>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <AchievementsPage />
                 </motion.div>
               </ProtectedRoute>
             } 

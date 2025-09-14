@@ -55,12 +55,12 @@ const ExpenseForm = ({ onClose, onSubmit, loading }) => {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
-          className="bg-white rounded-2xl shadow-2xl w-full max-w-md"
+          className="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 sm:mx-0"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900">Add Expense 💸</h2>
+          <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200">
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Add Expense 💸</h2>
             <button
               onClick={onClose}
               className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
@@ -71,7 +71,7 @@ const ExpenseForm = ({ onClose, onSubmit, loading }) => {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="p-6 space-y-6">
+          <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-6">
             {/* Amount */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -100,7 +100,7 @@ const ExpenseForm = ({ onClose, onSubmit, loading }) => {
               <select
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm sm:text-base"
               >
                 {categories.map((category) => (
                   <option key={category.value} value={category.value}>
@@ -109,7 +109,7 @@ const ExpenseForm = ({ onClose, onSubmit, loading }) => {
                 ))}
               </select>
               {selectedCategory && (
-                <div className={`mt-2 inline-block px-3 py-1 rounded-full text-sm font-medium ${selectedCategory.color}`}>
+                <div className={`mt-2 inline-block px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${selectedCategory.color}`}>
                   {selectedCategory.label}
                 </div>
               )}
@@ -142,8 +142,8 @@ const ExpenseForm = ({ onClose, onSubmit, loading }) => {
                 <textarea
                   value={formData.note}
                   onChange={(e) => setFormData({ ...formData, note: e.target.value })}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
-                  rows="3"
+                  className="w-full pl-10 pr-4 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none text-sm sm:text-base"
+                  rows="2"
                   placeholder="What was this expense for?"
                 />
               </div>
@@ -153,7 +153,7 @@ const ExpenseForm = ({ onClose, onSubmit, loading }) => {
             <button
               type="submit"
               disabled={loading || !formData.amount || parseFloat(formData.amount) <= 0}
-              className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base py-2 sm:py-3"
             >
               {loading ? 'Adding...' : 'Add Expense'}
             </button>

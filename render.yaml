@@ -1,0 +1,38 @@
+services:
+  # Frontend - React/Vite Static Site
+  - type: web
+    name: finmate-frontend
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/dist
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://finmate-backend.onrender.com/api/*
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+  # Backend - Flask API
+  - type: web
+    name: finmate-backend
+    env: python
+    buildCommand: cd backend && pip install -r requirements.txt
+    startCommand: cd backend && gunicorn --bind 0.0.0.0:$PORT app:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: FLASK_APP
+        value: app.py
+      - key: PORT
+        generateValue: true
+
+  # Database - PostgreSQL
+  - type: pserv
+    name: finmate-database
+    env: docker
+    dockerfilePath: ./Dockerfile.postgres
+    disk:
+      name: finmate-db-disk
+      mountPath: /var/lib/postgresql/data
+      sizeGB: 1

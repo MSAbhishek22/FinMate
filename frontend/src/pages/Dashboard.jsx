@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, Plus, TrendingUp, TrendingDown } from 'lucide-react'
+import { ArrowLeft, Plus, TrendingUp, TrendingDown, BookOpen, Award } from 'lucide-react'
 import ExpenseForm from '../components/ExpenseForm'
 import ExpenseList from '../components/ExpenseList'
 import ExpenseChart from '../components/ExpenseChart'
 import AITipCard from '../components/AITipCard'
+import FinancialTipsCard from '../components/FinancialTipsCard'
 import { useExpenses } from '../hooks/useExpenses'
 import { useAITips } from '../hooks/useAITips'
 
@@ -29,27 +30,45 @@ const Dashboard = () => {
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-4">
               <Link 
                 to="/" 
                 className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
                 aria-label="Back to home"
               >
-                <ArrowLeft className="w-5 h-5 text-gray-600" />
+                <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
               </Link>
               <div>
-                <h1 className="text-2xl font-bold text-gradient">FinMate 💰</h1>
-                <p className="text-sm text-gray-500">Your Finance Dashboard</p>
+                <h1 className="text-lg sm:text-2xl font-bold text-gradient">FinMate 💰</h1>
+                <p className="text-xs sm:text-sm text-gray-500 hidden sm:block">Your Finance Dashboard</p>
               </div>
             </div>
-            <button
-              onClick={() => setShowForm(true)}
-              className="btn-primary flex items-center space-x-2"
-              aria-label="Add new expense"
-            >
-              <Plus className="w-5 h-5" />
-              <span>Add Expense</span>
-            </button>
+            <div className="flex items-center space-x-1 sm:space-x-4">
+              <Link
+                to="/learning"
+                className="btn-secondary flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-2 text-sm"
+                aria-label="Go to learning"
+              >
+                <BookOpen className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="hidden sm:inline">Learn</span>
+              </Link>
+              <Link
+                to="/achievements"
+                className="btn-secondary flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-2 text-sm"
+                aria-label="View achievements"
+              >
+                <Award className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="hidden sm:inline">Achievements</span>
+              </Link>
+              <button
+                onClick={() => setShowForm(true)}
+                className="btn-primary flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-2 text-sm"
+                aria-label="Add new expense"
+              >
+                <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="hidden sm:inline">Add</span>
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -99,9 +118,9 @@ const Dashboard = () => {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-8">
             {/* Chart Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -132,14 +151,14 @@ const Dashboard = () => {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
-            {/* AI Tip Card */}
+          <div className="space-y-4 sm:space-y-6">
+            {/* Financial Tips Card */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <AITipCard tip={tip} loading={tipLoading} />
+              <FinancialTipsCard />
             </motion.div>
 
             {/* Quick Actions */}
@@ -159,12 +178,18 @@ const Dashboard = () => {
                 >
                   + Add Expense
                 </button>
-                <button className="w-full btn-secondary text-left">
-                  📊 View Reports
-                </button>
-                <button className="w-full bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-medium py-3 px-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  📚 Learn Investing
-                </button>
+                <Link
+                  to="/learning"
+                  className="w-full btn-secondary text-center block"
+                >
+                  📚 Financial Learning
+                </Link>
+                <Link
+                  to="/achievements"
+                  className="w-full bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-medium py-3 px-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 block text-center"
+                >
+                  🏆 View Achievements
+                </Link>
               </div>
             </motion.div>
           </div>

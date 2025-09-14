@@ -11,24 +11,22 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}']
       },
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: 'FinMate - Your Finance Buddy',
+        name: 'FinMate - Personal Finance Tracker',
         short_name: 'FinMate',
-        description: 'Track. Save. Grow. Your money, your way.',
-        theme_color: '#8b5cf6',
+        description: 'Track your expenses and build better financial habits',
+        theme_color: '#0d9488',
         background_color: '#ffffff',
         display: 'standalone',
-        orientation: 'portrait',
-        scope: '/',
-        start_url: '/',
         icons: [
           {
-            src: 'icons/icon-192x192.png',
+            src: 'pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'icons/icon-512x512.png',
+            src: 'pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png'
           }
@@ -36,7 +34,22 @@ export default defineConfig({
       }
     })
   ],
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
   server: {
+    proxy: {
+      '/api': {
+        target: process.env.VITE_API_URL || 'http://localhost:5000',
+        changeOrigin: true,
+      },
+    },
     port: 3000,
     host: true
   }
