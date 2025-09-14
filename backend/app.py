@@ -39,13 +39,36 @@ CORS(app,
 )
 
 # Database configuration
-DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///finmate.db')
+DATABASE_URL = os.getenv('DATABASE_URL')
 
-# Handle PostgreSQL URL format for Render
-if DATABASE_URL and DATABASE_URL.startswith('postgres://'):
-    DATABASE_URL = DATABASE_URL.replace('postgres://', 'postgresql://', 1)
+# Validate and fix DATABASE_URL
+if not DATABASE_URL or DATABASE_URL == 'postgresql://username:password@hostname:port/database_name':
+    # Use SQLite for development/testing
+    DATABASE_URL = 'sqlite:///finmate.db'
+    print("Warning: Using SQLite database. Set DATABASE_URL environment variable for production.")
+else:
+    # Handle PostgreSQL URL format for Render
+    if DATABASE_URL.startswith('postgres://'):
+        DATABASE_URL = DATABASE_URL.replace('postgres://', 'postgresql://', 1)
+    
+    # Validate URL format
+    try:
+        from urllib.parse import urlparse
+        parsed = urlparse(DATABASE_URL)
+        if not all([parsed.scheme, parsed.netloc]):
+            raise ValueError("Invalid DATABASE_URL format")
+    except Exception as e:
+        print(f"Invalid DATABASE_URL: {e}. Falling back to SQLite.")
+        DATABASE_URL = 'sqlite:///finmate.db'
 
-engine = create_engine(DATABASE_URL)
+try:
+    engine = create_engine(DATABASE_URL)
+    print(f"Database connection successful: {DATABASE_URL.split('@')[0] if '@' in DATABASE_URL else 'sqlite'}@***")
+except Exception as e:
+    print(f"Database connection failed: {e}")
+    print("Falling back to SQLite database")
+    DATABASE_URL = 'sqlite:///finmate.db'
+    engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Create db object for compatibility
